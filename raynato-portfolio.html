@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raynato Pedrajeta - Application Development Team Lead</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #EF4444;
+            --dark-red: #DC2626;
+            --light-red: #FEE2E2;
+            --white: #FFFFFF;
+            --dark-bg: #0F172A;
+            --dark-secondary: #1E293B;
+            --text-light: #E2E8F0;
+            --text-secondary: #CBD5E1;
+            --accent: #06B6D4;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-secondary) 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary-red);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero .title {
+            font-size: 2rem;
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-red);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border: 2px solid var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-red);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-red);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        /* About Section */
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(239, 68, 68, 0.1);
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-red);
+            border-radius: 2px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-red);
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(239, 68, 68, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-red);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(239, 68, 68, 0.1);
+            transform: translateX(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            font-weight: 700;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(239, 68, 68, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            border-top: 3px solid var(--primary-red);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-item {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 0.7rem;
+            margin-right: 0.7rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: var(--primary-red);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary-red), transparent);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: var(--primary-red);
+            border: 3px solid var(--dark-bg);
+            border-radius: 50%;
+        }
+
+        .timeline-item h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-item .company {
+            color: var(--primary-red);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            color: var(--text-secondary);
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .timeline-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-red);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+        .contact-section p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(239, 68, 68, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(239, 68, 68, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .contact-item i {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-red);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            border-top: 2px solid var(--primary-red);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .title {
+                font-size: 1.4rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="#home" class="logo">Raynato.</a>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm Raynato Pedrajeta</h1>
+                <div class="title">Application Development Team Lead</div>
+                <p>An experienced Software Engineer with 7 years of expertise in developing innovative and scalable solutions. Specializing in Generative AI, cloud platforms, and full-stack web development with a passion for leading teams to deliver high-quality results under tight deadlines.</p>
+                
+                <div class="btn-group">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://facebook.com" title="Facebook" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com" title="Twitter" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://linkedin.com" title="LinkedIn" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Professional Summary</h3>
+                    <p>I'm a versatile software engineer with a strong background in building innovative solutions across diverse technologies. Throughout my 7-year career, I've developed expertise in frontend and backend web development, blockchain integration, and cutting-edge Generative AI projects.</p>
+                    <p>What drives me is the opportunity to collaborate with talented teams and deliver high-quality solutions that make a real impact. I value technical excellence, clear communication, and the ability to adapt quickly to new challenges and technologies.</p>
+                </div>
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">7+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">AI POCs</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">BS IT</div>
+                        <div class="stat-label">Adamson University</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2>Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Application Development Team Lead</h3>
+                    <div class="company">Accenture, Inc.</div>
+                    <div class="date">June 2025 - Present</div>
+                    <ul>
+                        <li>Leading backend development initiatives with Python and LLM engineering</li>
+                        <li>Utilizing Google Gemini as the primary generative AI platform</li>
+                        <li>Overseeing frontend development with Angular for JavaScript library tasks</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Application Development Senior Analyst</h3>
+                    <div class="company">Accenture, Inc.</div>
+                    <div class="date">June 2020 - May 2025</div>
+                    <ul>
+                        <li>Contributed to core Generative AI functionalities for a POC app analyzing and resolving customer inquiry tickets using knowledge-based documents</li>
+                        <li>Developed applications leveraging Azure Cognitive Services for Speech-to-Text recognition and Azure OpenAI for processing</li>
+                        <li>Led frontend team by providing technical guidance and solutions for task resolution</li>
+                        <li>Involved in AI POCs showcased in demos and media launches</li>
+                        <li>Facilitated Kanban setup and managed 5 POC projects with fast-paced timelines</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Full Stack Web Developer</h3>
+                    <div class="company">Fasttrack Solutions Inc.</div>
+                    <div class="date">Aug 2019 - May 2020</div>
+                    <ul>
+                        <li>Migrated legacy systems to modern technologies, improving stability and reducing maintenance costs</li>
+                        <li>Developed app solutions using Angular and Vue.js JavaScript libraries</li>
+                        <li>Built backend solutions with PHP libraries including Laravel using MSSQL</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Web Developer</h3>
+                    <div class="company">Cloud Panda Inc.</div>
+                    <div class="date">Dec 2018 - May 2019</div>
+                    <ul>
+                        <li>Developed responsive websites using HTML, CSS, JavaScript, and jQuery</li>
+                        <li>Created visually appealing designs aligned with brand standards</li>
+                        <li>Contributed to Hyperledger Cacti open source blockchain interoperability framework</li>
+                        <li>Worked as a DAML Developer on Financial Stocks Exchange industry projects and facilitated DAML bootcamps</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>AI & Cloud Platforms</h3>
+                    <div>
+                        <span class="skill-item">Google Vertex AI</span>
+                        <span class="skill-item">Google Gemini</span>
+                        <span class="skill-item">Azure OpenAI</span>
+                        <span class="skill-item">Google Cloud Platform</span>
+                        <span class="skill-item">Microsoft Azure</span>
+                        <span class="skill-item">Vector Database</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Backend Development</h3>
+                    <div>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">PHP</span>
+                        <span class="skill-item">Laravel</span>
+                        <span class="skill-item">Codeigniter</span>
+                        <span class="skill-item">REST API</span>
+                        <span class="skill-item">Socket</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <div>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">TypeScript</span>
+                        <span class="skill-item">Angular</span>
+                        <span class="skill-item">Vue.js</span>
+                        <span class="skill-item">HTML</span>
+                        <span class="skill-item">CSS</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Database & Blockchain</h3>
+                    <div>
+                        <span class="skill-item">MySQL</span>
+                        <span class="skill-item">MSSQL</span>
+                        <span class="skill-item">NoSQL</span>
+                        <span class="skill-item">DAML</span>
+                        <span class="skill-item">Hyperledger Fabric</span>
+                        <span class="skill-item">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>I'm always interested in hearing about new projects and opportunities. Feel free to reach out!</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <a href="tel:+639157696288">+63 915 769 6288</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <a href="mailto:renrenpedrajets@gmail.com">renrenpedrajets@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>San Isidro, Nueva Ecija, PH</div>
+                </div>
+            </div>
+
+            <a href="mailto:renrenpedrajets@gmail.com" class="btn btn-primary">Send Me An Email</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Raynato Pedrajeta. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active navigation link highlight
+        const observerOptions = {
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.style.color = 'var(--text-light)';
+                    });
+                    const activeLink = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+                    if (activeLink) {
+                        activeLink.style.color = 'var(--primary-red)';
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Scroll reveal animations
+        const revealElements = document.querySelectorAll('.timeline-item, .skill-category, .contact-item, .stat-card');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            revealObserver.observe(el);
+        });
+    </script>
+</body>
+</html>
