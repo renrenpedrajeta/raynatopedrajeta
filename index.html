@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raynato Pedrajeta - Application Development Team Lead</title>
+    <title>Raynato Pedrajeta - AI Product Builder & GenAI Engineer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -13,764 +13,1278 @@
         }
 
         :root {
-            --primary-red: #EF4444;
-            --dark-red: #DC2626;
-            --light-red: #FEE2E2;
-            --white: #FFFFFF;
-            --dark-bg: #0F172A;
-            --dark-secondary: #1E293B;
-            --text-light: #E2E8F0;
-            --text-secondary: #CBD5E1;
-            --accent: #06B6D4;
+            --bg: #070b13;
+            --bg-soft: #0d1524;
+            --panel: rgba(18, 28, 46, 0.72);
+            --panel-strong: rgba(26, 39, 64, 0.9);
+            --line: rgba(148, 163, 184, 0.18);
+            --line-bright: rgba(125, 211, 252, 0.32);
+            --text: #f8fafc;
+            --muted: #a8b3c7;
+            --soft: #dbeafe;
+            --accent: #38bdf8;
+            --accent-2: #f97316;
+            --accent-3: #22c55e;
+            --warm: #fb7185;
+            --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-secondary) 100%);
-            color: var(--text-light);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at 18% 12%, rgba(56, 189, 248, 0.18), transparent 28rem),
+                radial-gradient(circle at 82% 3%, rgba(249, 115, 22, 0.16), transparent 24rem),
+                linear-gradient(135deg, #070b13 0%, #0d1320 45%, #101827 100%);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(1160px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
         header {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--primary-red);
-            padding: 1.5rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 50;
+            border-bottom: 1px solid var(--line);
+            background: rgba(7, 11, 19, 0.82);
+            backdrop-filter: blur(18px);
         }
 
         .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
+            min-height: 72px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            justify-content: space-between;
+            gap: 1.5rem;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-red);
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
             text-decoration: none;
-            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent);
         }
 
         nav {
             display: flex;
-            gap: 2rem;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         nav a {
-            color: var(--text-light);
+            color: var(--muted);
             text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            position: relative;
+            font-size: 0.88rem;
+            font-weight: 650;
+            transition: color 180ms ease;
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-red);
-            transition: width 0.3s ease;
+        nav a:hover {
+            color: var(--text);
         }
 
-        nav a:hover::after {
-            width: 100%;
+        section {
+            padding: 5.5rem 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .section-kicker {
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 0.65rem;
         }
 
-        /* Hero Section */
+        h1,
+        h2,
+        h3 {
+            letter-spacing: 0;
+            line-height: 1.08;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.1rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-intro {
+            color: var(--muted);
+            max-width: 760px;
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+        }
+
         .hero {
-            min-height: 100vh;
+            min-height: calc(100vh - 72px);
             display: flex;
             align-items: center;
+            padding: 5.5rem 0 4.5rem;
             position: relative;
             overflow: hidden;
-            padding: 4rem 0;
         }
 
-        .hero::before {
-            content: '';
+        .hero::after {
+            content: "";
             position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(239, 68, 68, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            inset: auto -18rem -26rem auto;
+            width: 42rem;
+            height: 42rem;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.14), transparent 68%);
+            pointer-events: none;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(30px); }
-        }
-
-        .hero-content {
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+            gap: 3rem;
+            align-items: center;
             position: relative;
-            z-index: 10;
-            max-width: 600px;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--soft);
+            border: 1px solid var(--line-bright);
+            background: rgba(56, 189, 248, 0.08);
+            border-radius: 999px;
+            padding: 0.55rem 0.85rem;
+            font-size: 0.84rem;
+            font-weight: 700;
+            margin-bottom: 1.3rem;
+        }
+
+        .eyebrow i {
+            color: var(--accent);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: clamp(3.1rem, 7vw, 6.25rem);
+            max-width: 920px;
             margin-bottom: 1rem;
-            line-height: 1.1;
         }
 
-        .hero .title {
-            font-size: 2rem;
-            color: var(--primary-red);
-            margin-bottom: 1.5rem;
-            font-weight: 600;
+        .gradient-text {
+            background: linear-gradient(90deg, #f8fafc 0%, #7dd3fc 46%, #fb7185 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.8;
+        .hero-subtitle {
+            color: var(--accent);
+            font-size: clamp(1.15rem, 2.2vw, 1.65rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero-copy {
+            color: var(--muted);
+            max-width: 760px;
+            font-size: 1.12rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .badge-row,
+        .tech-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 999px;
+            padding: 0.58rem 0.8rem;
+            color: var(--soft);
+            font-size: 0.86rem;
+            font-weight: 700;
+        }
+
+        .badge i {
+            color: var(--accent-2);
         }
 
         .btn-group {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+            margin: 2rem 0 2.25rem;
         }
 
         .btn {
-            padding: 0.9rem 2rem;
-            font-size: 1rem;
-            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem;
+            min-height: 48px;
+            padding: 0.85rem 1.15rem;
             border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
             text-decoration: none;
-            display: inline-block;
-            text-align: center;
+            font-weight: 800;
+            border: 1px solid transparent;
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
         }
 
         .btn-primary {
-            background: var(--primary-red);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: var(--dark-red);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+            color: #06111f;
+            background: linear-gradient(135deg, #7dd3fc, #22c55e);
+            box-shadow: 0 16px 42px rgba(56, 189, 248, 0.2);
         }
 
         .btn-secondary {
-            background: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
+            color: var(--text);
+            border-color: var(--line-bright);
+            background: rgba(255, 255, 255, 0.04);
         }
 
-        .btn-secondary:hover {
-            background: var(--accent);
-            color: var(--dark-bg);
-            transform: translateY(-3px);
+        .hero-panel {
+            border: 1px solid var(--line);
+            background: linear-gradient(180deg, rgba(18, 28, 46, 0.9), rgba(10, 18, 31, 0.88));
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            padding: 1.4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--warm));
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .metric {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .metric strong {
+            display: block;
+            font-size: 1.9rem;
+            color: var(--text);
+            line-height: 1;
+            margin-bottom: 0.45rem;
+        }
+
+        .metric span {
+            color: var(--muted);
+            font-size: 0.86rem;
+        }
+
+        .panel-note {
+            margin-top: 1rem;
+            color: var(--soft);
+            border: 1px solid rgba(34, 197, 94, 0.24);
+            background: rgba(34, 197, 94, 0.07);
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: 0.94rem;
         }
 
         .social-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 0.8rem;
         }
 
         .social-links a {
-            width: 45px;
-            height: 45px;
-            border: 2px solid var(--primary-red);
-            border-radius: 50%;
-            display: flex;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-red);
-            transition: all 0.3s ease;
             text-decoration: none;
+            color: var(--muted);
+            transition: color 180ms ease, border-color 180ms ease, transform 180ms ease;
         }
 
         .social-links a:hover {
-            background: var(--primary-red);
-            color: var(--white);
-            transform: scale(1.1);
-        }
-
-        /* About Section */
-        section {
-            padding: 5rem 0;
-            border-bottom: 1px solid rgba(239, 68, 68, 0.1);
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--white);
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--primary-red);
-            border-radius: 2px;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--primary-red);
-        }
-
-        .about-text p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .stat-card {
-            background: rgba(239, 68, 68, 0.05);
-            padding: 2rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-red);
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            background: rgba(239, 68, 68, 0.1);
-            transform: translateX(10px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            color: var(--primary-red);
-            font-weight: 700;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: rgba(239, 68, 68, 0.05);
-            padding: 2rem;
-            border-radius: 12px;
-            border-top: 3px solid var(--primary-red);
-        }
-
-        .skill-category h3 {
-            color: var(--primary-red);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .skill-item {
-            display: inline-block;
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--text-light);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            margin-bottom: 0.7rem;
-            margin-right: 0.7rem;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .skill-item:hover {
-            background: var(--primary-red);
-            color: var(--white);
+            color: var(--accent);
+            border-color: var(--accent);
             transform: translateY(-2px);
         }
 
-        /* Experience Section */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
+        .grid-3,
+        .grid-2,
+        .grid-4 {
+            display: grid;
+            gap: 1rem;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--primary-red), transparent);
+        .grid-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
         }
 
-        .timeline-item {
-            margin-bottom: 3rem;
-            padding-left: 2rem;
-            position: relative;
+        .grid-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -7px;
-            top: 5px;
-            width: 14px;
-            height: 14px;
-            background: var(--primary-red);
-            border: 3px solid var(--dark-bg);
-            border-radius: 50%;
+        .grid-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
         }
 
-        .timeline-item h3 {
-            color: var(--white);
-            font-size: 1.3rem;
-            margin-bottom: 0.3rem;
+        .card {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            border-radius: 8px;
+            padding: 1.25rem;
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.16);
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
         }
 
-        .timeline-item .company {
-            color: var(--primary-red);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--line-bright);
+            background: var(--panel-strong);
         }
 
-        .timeline-item .date {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            color: #06111f;
+            background: linear-gradient(135deg, #7dd3fc, #22c55e);
             margin-bottom: 1rem;
         }
 
-        .timeline-item ul {
-            list-style: none;
-            color: var(--text-secondary);
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.65rem;
         }
 
-        .timeline-item li {
+        .card p {
+            color: var(--muted);
+        }
+
+        .feature-card {
+            min-height: 100%;
+        }
+
+        .feature-card .status {
+            display: inline-flex;
             margin-bottom: 0.8rem;
-            padding-left: 1.2rem;
-            position: relative;
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
         }
 
-        .timeline-item li::before {
-            content: '▸';
+        .case-study {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 1.2rem;
+            align-items: start;
+        }
+
+        .case-study + .case-study {
+            margin-top: 1rem;
+        }
+
+        .case-title {
+            position: sticky;
+            top: 96px;
+        }
+
+        .case-title h3 {
+            font-size: 1.45rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .case-detail {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .case-row {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.035);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .case-row strong {
+            display: block;
+            color: var(--soft);
+            margin-bottom: 0.25rem;
+        }
+
+        .case-row span {
+            color: var(--muted);
+        }
+
+        .tech-row {
+            margin-top: 1rem;
+        }
+
+        .tech-pill {
+            display: inline-flex;
+            border: 1px solid rgba(125, 211, 252, 0.22);
+            color: var(--soft);
+            background: rgba(56, 189, 248, 0.07);
+            border-radius: 999px;
+            padding: 0.45rem 0.68rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .leadership-list {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .leadership-item {
+            display: grid;
+            grid-template-columns: 42px 1fr;
+            gap: 0.9rem;
+            align-items: start;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .leadership-item i {
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            color: var(--accent);
+            background: rgba(56, 189, 248, 0.08);
+        }
+
+        .leadership-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .leadership-item p,
+        .timeline-item p {
+            color: var(--muted);
+        }
+
+        .timeline {
+            position: relative;
+            display: grid;
+            gap: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline::before {
+            content: "";
             position: absolute;
             left: 0;
-            color: var(--primary-red);
+            top: 0.5rem;
+            bottom: 0.5rem;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent), var(--accent-2), transparent);
         }
 
-        /* Contact Section */
+        .timeline-item {
+            position: relative;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            padding: 1.15rem;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: calc(-1.5rem - 5px);
+            top: 1.35rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 0 6px rgba(56, 189, 248, 0.12);
+        }
+
+        .timeline-item h3 {
+            font-size: 1.14rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .company,
+        .date {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .company {
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .timeline-item ul,
+        .enterprise-list {
+            list-style: none;
+            display: grid;
+            gap: 0.65rem;
+            margin-top: 0.9rem;
+            color: var(--muted);
+        }
+
+        .timeline-item li,
+        .enterprise-list li {
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .timeline-item li::before,
+        .enterprise-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.65rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-2);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-category h3 {
+            color: var(--soft);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+        }
+
+        .skill-item {
+            display: inline-flex;
+            color: var(--muted);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 999px;
+            padding: 0.42rem 0.62rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .recognition {
+            background:
+                linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(249, 115, 22, 0.09)),
+                rgba(255, 255, 255, 0.035);
+        }
+
+        .award-card {
+            display: grid;
+            grid-template-columns: 46px 1fr;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .award-card i {
+            color: var(--accent-2);
+            font-size: 1.8rem;
+        }
+
         .contact-section {
             text-align: center;
-            padding: 5rem 0;
         }
 
-        .contact-section p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
+        .contact-section .section-intro {
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .contact-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin: 2.2rem 0;
+            text-align: left;
         }
 
         .contact-item {
-            background: rgba(239, 68, 68, 0.05);
-            padding: 1.5rem;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            background: rgba(239, 68, 68, 0.1);
-            transform: translateY(-5px);
+            display: grid;
+            grid-template-columns: 42px 1fr;
+            gap: 0.8rem;
+            align-items: center;
         }
 
         .contact-item i {
-            color: var(--primary-red);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            border-radius: 8px;
+            background: rgba(56, 189, 248, 0.08);
         }
 
         .contact-item a {
-            color: var(--text-light);
             text-decoration: none;
-            transition: color 0.3s ease;
+            color: var(--text);
+            word-break: break-word;
         }
 
-        .contact-item a:hover {
-            color: var(--primary-red);
+        .contact-item span {
+            color: var(--muted);
+            font-size: 0.84rem;
         }
 
-        /* Footer */
         footer {
-            background: rgba(15, 23, 42, 0.95);
-            border-top: 2px solid var(--primary-red);
             padding: 2rem 0;
+            color: var(--muted);
             text-align: center;
-            color: var(--text-secondary);
+            background: rgba(7, 11, 19, 0.75);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav {
-                gap: 1rem;
-                font-size: 0.85rem;
-            }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 600ms ease, transform 600ms ease;
+        }
 
-            .hero h1 {
-                font-size: 2.2rem;
-            }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-            .hero .title {
-                font-size: 1.4rem;
-            }
-
-            .about-grid {
+        @media (max-width: 980px) {
+            .hero-grid,
+            .grid-3,
+            .grid-2,
+            .grid-4,
+            .skills-grid,
+            .contact-info {
                 grid-template-columns: 1fr;
             }
 
-            .btn-group {
-                flex-direction: column;
-            }
-
-            section h2 {
-                font-size: 1.8rem;
-            }
-
-            .skills-grid {
+            .case-study {
                 grid-template-columns: 1fr;
+            }
+
+            .case-title {
+                position: static;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                width: min(100% - 28px, 1160px);
             }
 
             .header-content {
+                align-items: flex-start;
                 flex-direction: column;
-                gap: 1.5rem;
+                padding: 1rem 0;
             }
 
             nav {
-                flex-direction: column;
-                gap: 0.5rem;
+                justify-content: flex-start;
+                gap: 0.75rem;
+            }
+
+            nav a {
+                font-size: 0.82rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 4rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <div class="header-content">
-            <a href="#home" class="logo">Raynato.</a>
-            <nav>
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
+        <div class="container header-content">
+            <a href="#home" class="logo">Raynato<span>.</span></a>
+            <nav aria-label="Primary navigation">
+                <a href="#builds">Building</a>
+                <a href="#ai-work">AI Work</a>
+                <a href="#projects">Case Studies</a>
+                <a href="#leadership">Leadership</a>
                 <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
+                <a href="#contact">Collaborate</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Hi, I'm Raynato Pedrajeta</h1>
-                <div class="title">Application Development Team Lead</div>
-                <p>An experienced Software Engineer with 7 years of expertise in developing innovative and scalable solutions. Specializing in Generative AI, cloud platforms, and full-stack web development with a passion for leading teams to deliver high-quality results under tight deadlines.</p>
-                
-                <div class="btn-group">
-                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <a href="#about" class="btn btn-secondary">Learn More</a>
+    <main>
+        <section id="home" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy-block reveal">
+                    <div class="eyebrow"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Product Builder / GenAI Engineer / Technical Lead</div>
+                    <h1>Building <span class="gradient-text">AI-Powered Products, Automations, and Enterprise Platforms</span></h1>
+                    <div class="hero-subtitle">Software Engineer • GenAI Builder • Technical Lead</div>
+                    <p class="hero-copy">I'm Raynato Pedrajeta, a software engineer with 7+ years of enterprise engineering experience turning ideas into working applications, AI automation workflows, GenAI proof-of-concepts, and production-ready platforms.</p>
+
+                    <div class="badge-row" aria-label="Credibility badges">
+                        <span class="badge"><i class="fa-solid fa-award"></i> 7+ Years Experience</span>
+                        <span class="badge"><i class="fa-solid fa-brain"></i> GenAI & AI Automation</span>
+                        <span class="badge"><i class="fa-solid fa-link"></i> Blockchain / Hyperledger Cacti</span>
+                        <span class="badge"><i class="fa-solid fa-cloud"></i> GCP / Python / TypeScript</span>
+                        <span class="badge"><i class="fa-solid fa-trophy"></i> Innovation Award Winner</span>
+                    </div>
+
+                    <div class="btn-group">
+                        <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Let's Build Something Together</a>
+                        <a href="#ai-work" class="btn btn-secondary"><i class="fa-solid fa-layer-group"></i> Explore AI Work</a>
+                    </div>
+
+                    <div class="social-links" aria-label="Social links">
+                        <a href="https://facebook.com" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" title="Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
 
-                <div class="social-links">
-                    <a href="https://facebook.com" title="Facebook" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://twitter.com" title="Twitter" aria-label="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://linkedin.com" title="LinkedIn" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+                <aside class="hero-panel reveal" aria-label="Portfolio highlights">
+                    <div class="metric-grid">
+                        <div class="metric">
+                            <strong>7+</strong>
+                            <span>Years across enterprise software, AI POCs, web platforms, and team delivery.</span>
+                        </div>
+                        <div class="metric">
+                            <strong>15+</strong>
+                            <span>Projects delivered across frontend, backend, cloud, blockchain, and automation.</span>
+                        </div>
+                        <div class="metric">
+                            <strong>5+</strong>
+                            <span>GenAI POCs and demos built for innovation programs and client-facing showcases.</span>
+                        </div>
+                        <div class="metric">
+                            <strong>2x</strong>
+                            <span>Gantimpala Award recognition for GenAI and innovation work.</span>
+                        </div>
+                    </div>
+                    <p class="panel-note">Current focus: agentic workflows, AI content systems, social automation, enterprise GenAI integrations, and blockchain interoperability.</p>
+                </aside>
+            </div>
+        </section>
+
+        <section id="builds">
+            <div class="container">
+                <div class="section-kicker">Currently Building</div>
+                <h2>Active products and ecosystems</h2>
+                <p class="section-intro">A portfolio should show momentum. These are the product and engineering tracks I am actively shaping across AI automation, content operations, community engagement, and enterprise interoperability.</p>
+
+                <div class="grid-3">
+                    <article class="card feature-card reveal">
+                        <span class="status">AI Content Platform</span>
+                        <div class="card-icon"><i class="fa-solid fa-paw"></i></div>
+                        <h3>The Modern Pet Parent</h3>
+                        <p>AI-powered pet parenting and content platform focused on social media automation, community engagement, pet wellness, and repeatable content workflows for modern pet owners.</p>
+                    </article>
+                    <article class="card feature-card reveal">
+                        <span class="status">Automation Ecosystem</span>
+                        <div class="card-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                        <h3>OpenClaw / AI Automation Ecosystem</h3>
+                        <p>AI agents and workflows for marketing operations, content generation, business automation, and social media management, designed to move from manual execution to repeatable systems.</p>
+                    </article>
+                    <article class="card feature-card reveal">
+                        <span class="status">Enterprise Open Source</span>
+                        <div class="card-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        <h3>Hyperledger Cacti / DAML Connector</h3>
+                        <p>Enterprise blockchain interoperability work involving DAML, Docker, TypeScript endpoints, CI/CD validation, integration tests, and connector development.</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <h3>Professional Summary</h3>
-                    <p>I'm a versatile software engineer with a strong background in building innovative solutions across diverse technologies. Throughout my 7-year career, I've developed expertise in frontend and backend web development, blockchain integration, and cutting-edge Generative AI projects.</p>
-                    <p>What drives me is the opportunity to collaborate with talented teams and deliver high-quality solutions that make a real impact. I value technical excellence, clear communication, and the ability to adapt quickly to new challenges and technologies.</p>
+        <section id="ai-work">
+            <div class="container">
+                <div class="section-kicker">AI Projects</div>
+                <h2>GenAI prototypes, automations, and product experiments</h2>
+                <p class="section-intro">I build with the full loop in mind: user problem, AI capability, product workflow, engineering constraints, and how teams will actually operate the system after the demo.</p>
+
+                <div class="grid-3">
+                    <article class="card reveal">
+                        <div class="card-icon"><i class="fa-solid fa-flask"></i></div>
+                        <h3>GenAI POCs</h3>
+                        <p>Built proof-of-concept applications using LLMs, knowledge documents, AI search patterns, and cloud AI services for customer inquiry analysis and resolution support.</p>
+                    </article>
+                    <article class="card reveal">
+                        <div class="card-icon"><i class="fa-solid fa-gears"></i></div>
+                        <h3>AI Automation Workflows</h3>
+                        <p>Designed automation workflows that connect content generation, business operations, and social media execution into scalable repeatable processes.</p>
+                    </article>
+                    <article class="card reveal">
+                        <div class="card-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                        <h3>OpenClaw Automations</h3>
+                        <p>Agent-inspired workflows for marketing operations, content calendars, campaign ideation, content generation, and social media management.</p>
+                    </article>
+                    <article class="card reveal">
+                        <div class="card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <h3>The Modern Pet Parent</h3>
+                        <p>AI-assisted platform concept combining pet wellness, creator workflows, audience engagement, and automated content systems.</p>
+                    </article>
+                    <article class="card reveal">
+                        <div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h3>Project KAT</h3>
+                        <p>Innovation project recognized through the Gantimpala Award and GTIC Innovation Contest involvement, focused on turning R&D concepts into demo-ready applications.</p>
+                    </article>
+                    <article class="card reveal">
+                        <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+                        <h3>Gen-E the Gen AI</h3>
+                        <p>Award-winning GenAI initiative demonstrating practical AI assistance, natural language workflows, and internal innovation capability.</p>
+                    </article>
                 </div>
-                <div class="stat-grid">
-                    <div class="stat-card">
-                        <div class="stat-number">7+</div>
-                        <div class="stat-label">Years Experience</div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <div class="section-kicker">Case Studies</div>
+                <h2>Selected project stories</h2>
+                <p class="section-intro">These examples move beyond project names and show the problem, solution, impact, and technology behind the work.</p>
+
+                <article class="card case-study reveal">
+                    <div class="case-title">
+                        <h3>Customer Inquiry GenAI Assistant</h3>
+                        <div class="tech-row">
+                            <span class="tech-pill">Azure OpenAI</span>
+                            <span class="tech-pill">Azure Cognitive Services</span>
+                            <span class="tech-pill">Python</span>
+                            <span class="tech-pill">Knowledge Documents</span>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Projects Completed</div>
+                    <div class="case-detail">
+                        <div class="case-row"><strong>Problem</strong><span>Support teams needed faster ways to understand customer inquiry tickets and resolve them using existing knowledge-based documents.</span></div>
+                        <div class="case-row"><strong>Solution</strong><span>Contributed core GenAI functionality for a POC that analyzed tickets, processed knowledge content, and helped generate resolution guidance.</span></div>
+                        <div class="case-row"><strong>Impact</strong><span>Helped move the concept into demo-ready form for AI showcases, proving how enterprise teams can use LLMs for practical support workflows.</span></div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">5+</div>
-                        <div class="stat-label">AI POCs</div>
+                </article>
+
+                <article class="card case-study reveal">
+                    <div class="case-title">
+                        <h3>OpenClaw AI Automation Ecosystem</h3>
+                        <div class="tech-row">
+                            <span class="tech-pill">AI Agents</span>
+                            <span class="tech-pill">Content Automation</span>
+                            <span class="tech-pill">Marketing Ops</span>
+                            <span class="tech-pill">Workflow Design</span>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">BS IT</div>
-                        <div class="stat-label">Adamson University</div>
+                    <div class="case-detail">
+                        <div class="case-row"><strong>Problem</strong><span>Marketing and business operations often depend on repetitive manual work across ideation, writing, scheduling, and channel management.</span></div>
+                        <div class="case-row"><strong>Solution</strong><span>Designed AI workflows and agentic patterns for content generation, social media management, campaign operations, and business automation.</span></div>
+                        <div class="case-row"><strong>Impact</strong><span>Created a product direction for repeatable automation systems that can support startups, creators, and operating teams.</span></div>
+                    </div>
+                </article>
+
+                <article class="card case-study reveal">
+                    <div class="case-title">
+                        <h3>Hyperledger Cacti DAML Connector</h3>
+                        <div class="tech-row">
+                            <span class="tech-pill">TypeScript</span>
+                            <span class="tech-pill">DAML</span>
+                            <span class="tech-pill">Docker</span>
+                            <span class="tech-pill">Jest</span>
+                            <span class="tech-pill">OpenAPI</span>
+                        </div>
+                    </div>
+                    <div class="case-detail">
+                        <div class="case-row"><strong>Problem</strong><span>Enterprise blockchain systems need reliable interoperability patterns, validated APIs, and repeatable environments for connector development.</span></div>
+                        <div class="case-row"><strong>Solution</strong><span>Worked on DAML connector development, Dockerized DAML environments, TypeScript endpoints, integration tests, OpenAPI validation, and CI/CD improvements.</span></div>
+                        <div class="case-row"><strong>Impact</strong><span>Strengthened enterprise-grade blockchain interoperability work and contributed to open-source infrastructure used by engineering teams.</span></div>
+                    </div>
+                </article>
+
+                <article class="card case-study reveal">
+                    <div class="case-title">
+                        <h3>Legacy Web Platform Modernization</h3>
+                        <div class="tech-row">
+                            <span class="tech-pill">Angular</span>
+                            <span class="tech-pill">Vue.js</span>
+                            <span class="tech-pill">Laravel</span>
+                            <span class="tech-pill">MSSQL</span>
+                        </div>
+                    </div>
+                    <div class="case-detail">
+                        <div class="case-row"><strong>Problem</strong><span>Older business systems were harder to maintain, less stable, and slower to evolve with new requirements.</span></div>
+                        <div class="case-row"><strong>Solution</strong><span>Migrated legacy systems into modern frontend and backend stacks using Angular, Vue.js, PHP frameworks, Laravel, and MSSQL.</span></div>
+                        <div class="case-row"><strong>Impact</strong><span>Improved maintainability, stability, and the team's ability to ship business features with less friction.</span></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="leadership">
+            <div class="container">
+                <div class="section-kicker">Leadership</div>
+                <h2>Beyond coding: moving teams and ideas forward</h2>
+                <p class="section-intro">My senior value is not only writing code. It is turning ambiguity into shippable work, helping teams move faster, and creating enough structure for innovation to survive real delivery pressure.</p>
+
+                <div class="grid-2">
+                    <div class="leadership-list">
+                        <div class="leadership-item reveal"><i class="fa-solid fa-people-group"></i><div><h3>Sub-lead developer</h3><p>Provided technical direction, task support, and implementation guidance for frontend and full-stack teams.</p></div></div>
+                        <div class="leadership-item reveal"><i class="fa-solid fa-list-check"></i><div><h3>Scrum master and delivery support</h3><p>Facilitated Kanban setup, coordinated fast-paced POC work, and helped teams keep delivery visible and actionable.</p></div></div>
+                        <div class="leadership-item reveal"><i class="fa-solid fa-seedling"></i><div><h3>Mentoring and team enablement</h3><p>Supported teammates through technical problem solving, review conversations, and practical guidance during implementation.</p></div></div>
+                    </div>
+                    <div class="leadership-list">
+                        <div class="leadership-item reveal"><i class="fa-solid fa-flask-vial"></i><div><h3>POC and R&D lead</h3><p>Helped turn early ideas into working applications for demos, media launches, and innovation showcases.</p></div></div>
+                        <div class="leadership-item reveal"><i class="fa-solid fa-handshake-angle"></i><div><h3>Stakeholder communication</h3><p>Translated technical constraints and product ideas into clear updates for team members and project stakeholders.</p></div></div>
+                        <div class="leadership-item reveal"><i class="fa-solid fa-cubes"></i><div><h3>Product-building mindset</h3><p>Focused on usable workflows, end-to-end execution, and moving from prototype to practical application.</p></div></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="container">
-            <h2>Work Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h3>Application Development Team Lead</h3>
-                    <div class="company">Accenture, Inc.</div>
-                    <div class="date">June 2025 - Present</div>
-                    <ul>
-                        <li>Leading backend development initiatives with Python and LLM engineering</li>
-                        <li>Utilizing Google Gemini as the primary generative AI platform</li>
-                        <li>Overseeing frontend development with Angular for JavaScript library tasks</li>
-                    </ul>
-                </div>
+        <section id="open-source">
+            <div class="container">
+                <div class="section-kicker">Open Source & Enterprise Engineering</div>
+                <h2>Hyperledger Cacti and blockchain interoperability</h2>
+                <p class="section-intro">I bring enterprise discipline to exploratory technology: repeatable environments, validated APIs, tests, CI/CD, and clear connector boundaries.</p>
 
-                <div class="timeline-item">
-                    <h3>Application Development Senior Analyst</h3>
-                    <div class="company">Accenture, Inc.</div>
-                    <div class="date">June 2020 - May 2025</div>
-                    <ul>
-                        <li>Contributed to core Generative AI functionalities for a POC app analyzing and resolving customer inquiry tickets using knowledge-based documents</li>
-                        <li>Developed applications leveraging Azure Cognitive Services for Speech-to-Text recognition and Azure OpenAI for processing</li>
-                        <li>Led frontend team by providing technical guidance and solutions for task resolution</li>
-                        <li>Involved in AI POCs showcased in demos and media launches</li>
-                        <li>Facilitated Kanban setup and managed 5 POC projects with fast-paced timelines</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>Full Stack Web Developer</h3>
-                    <div class="company">Fasttrack Solutions Inc.</div>
-                    <div class="date">Aug 2019 - May 2020</div>
-                    <ul>
-                        <li>Migrated legacy systems to modern technologies, improving stability and reducing maintenance costs</li>
-                        <li>Developed app solutions using Angular and Vue.js JavaScript libraries</li>
-                        <li>Built backend solutions with PHP libraries including Laravel using MSSQL</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>Web Developer</h3>
-                    <div class="company">Cloud Panda Inc.</div>
-                    <div class="date">Dec 2018 - May 2019</div>
-                    <ul>
-                        <li>Developed responsive websites using HTML, CSS, JavaScript, and jQuery</li>
-                        <li>Created visually appealing designs aligned with brand standards</li>
-                        <li>Contributed to Hyperledger Cacti open source blockchain interoperability framework</li>
-                        <li>Worked as a DAML Developer on Financial Stocks Exchange industry projects and facilitated DAML bootcamps</li>
-                    </ul>
+                <div class="grid-2">
+                    <article class="card reveal">
+                        <h3>DAML connector engineering</h3>
+                        <ul class="enterprise-list">
+                            <li>DAML connector development for enterprise blockchain interoperability</li>
+                            <li>Dockerized DAML environments for repeatable local and CI execution</li>
+                            <li>TypeScript endpoint work and ledger integration patterns</li>
+                            <li>OpenAPI validation to improve connector reliability and contract clarity</li>
+                        </ul>
+                    </article>
+                    <article class="card reveal">
+                        <h3>Quality and delivery systems</h3>
+                        <ul class="enterprise-list">
+                            <li>Jest integration tests for connector behavior and regression confidence</li>
+                            <li>CI/CD improvements for automated validation and engineering feedback</li>
+                            <li>DAML bootcamp facilitation and applied blockchain knowledge sharing</li>
+                            <li>Financial stocks exchange industry exposure through DAML-focused work</li>
+                        </ul>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2>Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>AI & Cloud Platforms</h3>
-                    <div>
-                        <span class="skill-item">Google Vertex AI</span>
-                        <span class="skill-item">Google Gemini</span>
-                        <span class="skill-item">Azure OpenAI</span>
-                        <span class="skill-item">Google Cloud Platform</span>
-                        <span class="skill-item">Microsoft Azure</span>
-                        <span class="skill-item">Vector Database</span>
-                    </div>
+        <section id="recognition" class="recognition">
+            <div class="container">
+                <div class="section-kicker">Recognition</div>
+                <h2>Awards and innovation programs</h2>
+                <p class="section-intro">Recognition from innovation initiatives reflects the kind of work I enjoy most: experimenting with emerging technology, building quickly, and making the result understandable to others.</p>
+
+                <div class="grid-3">
+                    <article class="card award-card reveal">
+                        <i class="fa-solid fa-trophy"></i>
+                        <div>
+                            <h3>Gantimpala Award - Gen-E GenAI</h3>
+                            <p>Award recognition for a GenAI initiative focused on practical AI assistance and innovation delivery.</p>
+                        </div>
+                    </article>
+                    <article class="card award-card reveal">
+                        <i class="fa-solid fa-medal"></i>
+                        <div>
+                            <h3>Gantimpala Award - Project KAT</h3>
+                            <p>Recognized for innovation work that moved from concept into a demonstrable application experience.</p>
+                        </div>
+                    </article>
+                    <article class="card award-card reveal">
+                        <i class="fa-solid fa-star"></i>
+                        <div>
+                            <h3>GTIC Innovation Contest</h3>
+                            <p>Involved in innovation contest work and AI POCs showcased through demos and launch activities.</p>
+                        </div>
+                    </article>
                 </div>
+            </div>
+        </section>
 
-                <div class="skill-category">
-                    <h3>Backend Development</h3>
-                    <div>
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">PHP</span>
-                        <span class="skill-item">Laravel</span>
-                        <span class="skill-item">Codeigniter</span>
-                        <span class="skill-item">REST API</span>
-                        <span class="skill-item">Socket</span>
+        <section id="career">
+            <div class="container">
+                <div class="section-kicker">Career Timeline</div>
+                <h2>Evolution from engineer to AI product creator</h2>
+                <p class="section-intro">The through-line is steady: build reliable software, learn emerging tools early, lead teams through ambiguity, and turn technology into products people can use.</p>
+
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <h3>Enterprise Software Engineer</h3>
+                        <p>Built production web applications, responsive interfaces, backend services, database-backed systems, and legacy modernization work.</p>
                     </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Frontend Development</h3>
-                    <div>
-                        <span class="skill-item">JavaScript</span>
-                        <span class="skill-item">TypeScript</span>
-                        <span class="skill-item">Angular</span>
-                        <span class="skill-item">Vue.js</span>
-                        <span class="skill-item">HTML</span>
-                        <span class="skill-item">CSS</span>
+                    <div class="timeline-item reveal">
+                        <h3>Innovation Engineer</h3>
+                        <p>Joined fast-moving POC work, demos, and R&D programs using cloud AI services, web platforms, and practical prototyping.</p>
                     </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Database & Blockchain</h3>
-                    <div>
-                        <span class="skill-item">MySQL</span>
-                        <span class="skill-item">MSSQL</span>
-                        <span class="skill-item">NoSQL</span>
-                        <span class="skill-item">DAML</span>
-                        <span class="skill-item">Hyperledger Fabric</span>
-                        <span class="skill-item">Git</span>
+                    <div class="timeline-item reveal">
+                        <h3>GenAI Builder</h3>
+                        <p>Built LLM-powered workflows with Gemini, Azure OpenAI, knowledge documents, speech-to-text, and customer support use cases.</p>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <h3>AI Automation Developer</h3>
+                        <p>Designed automation systems for marketing operations, content generation, business workflows, and social media execution.</p>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <h3>AI Product Creator</h3>
+                        <p>Currently shaping The Modern Pet Parent, OpenClaw automations, and AI-first product concepts with a builder's mindset.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p>I'm always interested in hearing about new projects and opportunities. Feel free to reach out!</p>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <a href="tel:+639157696288">+63 915 769 6288</a>
+        <section id="experience">
+            <div class="container">
+                <div class="section-kicker">Experience</div>
+                <h2>Professional background</h2>
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <h3>Application Development Team Lead</h3>
+                        <div class="company">Accenture, Inc.</div>
+                        <div class="date">June 2025 - Present</div>
+                        <ul>
+                            <li>Leading backend development initiatives with Python and LLM engineering.</li>
+                            <li>Utilizing Google Gemini as the primary generative AI platform.</li>
+                            <li>Overseeing frontend development with Angular for JavaScript library tasks.</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <a href="mailto:renrenpedrajets@gmail.com">renrenpedrajets@gmail.com</a>
+
+                    <div class="timeline-item reveal">
+                        <h3>Application Development Senior Analyst</h3>
+                        <div class="company">Accenture, Inc.</div>
+                        <div class="date">June 2020 - May 2025</div>
+                        <ul>
+                            <li>Contributed to core Generative AI functionality for a POC app analyzing and resolving customer inquiry tickets using knowledge-based documents.</li>
+                            <li>Developed applications leveraging Azure Cognitive Services for Speech-to-Text recognition and Azure OpenAI processing.</li>
+                            <li>Led frontend team members by providing technical guidance and solutions for task resolution.</li>
+                            <li>Participated in AI POCs showcased in demos and media launches.</li>
+                            <li>Facilitated Kanban setup and managed five fast-paced POC projects.</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>San Isidro, Nueva Ecija, PH</div>
+
+                    <div class="timeline-item reveal">
+                        <h3>Full Stack Web Developer</h3>
+                        <div class="company">Fasttrack Solutions Inc.</div>
+                        <div class="date">Aug 2019 - May 2020</div>
+                        <ul>
+                            <li>Migrated legacy systems to modern technologies, improving stability and reducing maintenance effort.</li>
+                            <li>Developed application solutions using Angular and Vue.js.</li>
+                            <li>Built backend solutions with PHP libraries including Laravel and MSSQL.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <h3>Web Developer</h3>
+                        <div class="company">Cloud Panda Inc.</div>
+                        <div class="date">Dec 2018 - May 2019</div>
+                        <ul>
+                            <li>Developed responsive websites using HTML, CSS, JavaScript, and jQuery.</li>
+                            <li>Created visually aligned designs based on brand standards.</li>
+                            <li>Contributed to Hyperledger Cacti open-source blockchain interoperability framework.</li>
+                            <li>Worked as a DAML Developer on financial stocks exchange industry projects and facilitated DAML bootcamps.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <a href="mailto:renrenpedrajets@gmail.com" class="btn btn-primary">Send Me An Email</a>
-        </div>
-    </section>
+        <section id="about">
+            <div class="container">
+                <div class="section-kicker">About</div>
+                <h2>Senior engineer with a product builder's bias for action</h2>
+                <div class="grid-2">
+                    <article class="card reveal">
+                        <h3>Professional summary</h3>
+                        <p>I'm a versatile software engineer with a strong background in building innovative solutions across frontend, backend, blockchain integration, cloud platforms, and Generative AI projects. I value technical excellence, clear communication, and the ability to adapt quickly to new challenges.</p>
+                    </article>
+                    <article class="card reveal">
+                        <h3>Education</h3>
+                        <p>Bachelor of Science in Information Technology from Adamson University, paired with hands-on enterprise delivery experience and ongoing AI product experimentation.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-    <!-- Footer -->
+        <section id="skills">
+            <div class="container">
+                <div class="section-kicker">Skills</div>
+                <h2>Technical toolkit</h2>
+                <p class="section-intro">A practical mix of AI platforms, cloud services, full-stack engineering, blockchain interoperability, and team delivery practices.</p>
+
+                <div class="skills-grid">
+                    <article class="card skill-category reveal">
+                        <h3>AI & Cloud Platforms</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Google Vertex AI</span>
+                            <span class="skill-item">Google Gemini</span>
+                            <span class="skill-item">Azure OpenAI</span>
+                            <span class="skill-item">Google Cloud Platform</span>
+                            <span class="skill-item">Microsoft Azure</span>
+                            <span class="skill-item">Vector Database</span>
+                        </div>
+                    </article>
+                    <article class="card skill-category reveal">
+                        <h3>Backend Development</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">PHP</span>
+                            <span class="skill-item">Laravel</span>
+                            <span class="skill-item">CodeIgniter</span>
+                            <span class="skill-item">REST API</span>
+                            <span class="skill-item">Socket</span>
+                        </div>
+                    </article>
+                    <article class="card skill-category reveal">
+                        <h3>Frontend Development</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">JavaScript</span>
+                            <span class="skill-item">TypeScript</span>
+                            <span class="skill-item">Angular</span>
+                            <span class="skill-item">Vue.js</span>
+                            <span class="skill-item">HTML</span>
+                            <span class="skill-item">CSS</span>
+                        </div>
+                    </article>
+                    <article class="card skill-category reveal">
+                        <h3>Data, Blockchain & Delivery</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">MySQL</span>
+                            <span class="skill-item">MSSQL</span>
+                            <span class="skill-item">NoSQL</span>
+                            <span class="skill-item">DAML</span>
+                            <span class="skill-item">Hyperledger Fabric</span>
+                            <span class="skill-item">Git</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-kicker">Collaborate</div>
+                <h2>Let's Build Something Together</h2>
+                <p class="section-intro">I'm interested in AI products, GenAI integrations, agentic systems, startup MVPs, enterprise platforms, and automation workflows. If you are building something ambitious and practical, let's talk.</p>
+
+                <div class="contact-info">
+                    <div class="card contact-item reveal">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <span>Phone</span>
+                            <a href="tel:+639157696288">+63 915 769 6288</a>
+                        </div>
+                    </div>
+                    <div class="card contact-item reveal">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <span>Email</span>
+                            <a href="mailto:renrenpedrajets@gmail.com">renrenpedrajets@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="card contact-item reveal">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span>Location</span>
+                            <p>San Isidro, Nueva Ecija, PH</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="mailto:renrenpedrajets@gmail.com" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Start a Conversation</a>
+            </div>
+        </section>
+    </main>
+
     <footer>
         <div class="container">
-            <p>&copy; 2025 Raynato Pedrajeta. All rights reserved.</p>
+            <p>&copy; 2026 Raynato Pedrajeta. AI Product Builder, GenAI Engineer, Software Engineer, and Technical Lead.</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+        const activeObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                document.querySelectorAll("nav a").forEach((link) => {
+                    link.style.color = "var(--muted)";
+                });
+                const activeLink = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+                if (activeLink) activeLink.style.color = "var(--accent)";
             });
-        });
+        }, { threshold: 0.28 });
 
-        // Active navigation link highlight
-        const observerOptions = {
-            threshold: 0.3
-        };
+        document.querySelectorAll("main section").forEach((section) => activeObserver.observe(section));
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    document.querySelectorAll('nav a').forEach(link => {
-                        link.style.color = 'var(--text-light)';
-                    });
-                    const activeLink = document.querySelector(`nav a[href="#${entry.target.id}"]`);
-                    if (activeLink) {
-                        activeLink.style.color = 'var(--primary-red)';
-                    }
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Scroll reveal animations
-        const revealElements = document.querySelectorAll('.timeline-item, .skill-category, .contact-item, .stat-card');
         const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add("is-visible");
+                    revealObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1 });
 
-        revealElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            revealObserver.observe(el);
-        });
+        document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
     </script>
 </body>
 </html>
